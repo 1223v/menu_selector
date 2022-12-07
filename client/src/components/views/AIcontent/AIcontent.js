@@ -1,5 +1,4 @@
-import React, { useState, useRef } from 'react';
-//import {BsArrowCounterclockwise} from "react-icons/bs";
+import React, { useState, useRef} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as tmImage from '@teachablemachine/image';
 import Dots from 'react-activity/dist/Dots';
@@ -7,6 +6,7 @@ import 'react-activity/dist/Dots.css';
 import styled from 'styled-components';
 import { useDispatch} from 'react-redux';
 import { aiUser } from '../../../_actions/user_actions';
+
 
 
 
@@ -65,8 +65,10 @@ const ImageContainer = styled.div`
 	background-color: rgb(252, 248, 232);
 	
 	
-	background: linear-gradient(to right bottom, #CB00B2, #FF80B5);
+	
+	background: linear-gradient(to right bottom, #8033F1, #ffa69e);
     color: transparent;
+	
 	
 	
 	border-radius: 10px;
@@ -76,9 +78,6 @@ const ImageContainer = styled.div`
 	z-index: 5;
 	flex-direction: column;
 	box-shadow: 0px 3px 5px 1px rgb(252, 248, 232);
-	
-	
-	
 `;
 
 const Image = styled.img`
@@ -86,12 +85,12 @@ const Image = styled.img`
 	height: 100%;
 	border-radius: 10px;
 `;
-
 const AnalyzingContainer=styled.div`
 	top:50px;
 `
-const Drama = (props, { history }) => {
-	let URL = 'https://teachablemachine.withgoogle.com/models/Al_l9cjw8/';	
+
+const AIcontent = (props, { history }) => {
+	let URL = 'https://teachablemachine.withgoogle.com/models/D563JHUM9/'; //<--TM url
 
 	const modelURL = URL + 'model.json';
 	const metadataURL = URL + 'metadata.json';
@@ -104,7 +103,6 @@ const Drama = (props, { history }) => {
 	const [showResult, setShowResult] = useState(false);
 	const [predictionArr, setPredictionArr] = useState([]);
 	const [result, setResult] = useState(null);
-	const [keyword, setKeyword] = useState(null);
 	const dispatch = useDispatch();
 	
 	//react-router 사용
@@ -178,18 +176,19 @@ const Drama = (props, { history }) => {
 		if (event.target.files[0]) {
 			reader.readAsDataURL(event.target.files[0]); // 1. 파일을 읽어 버퍼에 저장합니다.
 			setImgFile(event.target.files[0]); // 파일 상태 업데이트
-			init().then(predict());
+			init().then( predict());
 		}
 	};
 
+
+
 	return (
-		<Container className="ai_page">
+		<Container className="ai_page">	
 			<br/>
-			
 			{showResult ? (
 				<div>분석결과는?</div>
 			) : (
-				<div style={{ width:'80%', fontSize:'20px', fontWeight:'bolder'}}>{loading ? '잠시만 기다려주세요!' : 'AI가 궁금한 여행지를 찾아드려요! (드라마)'}</div>
+				<div style={{ width:'80%', fontSize:'20px', fontWeight:'bolder'}}>{loading ? '잠시만 기다려주세요!' : 'AI가 확인해드립니다'}</div>
 			)}
 
 			{!loading && result === null ? (
@@ -198,14 +197,14 @@ const Drama = (props, { history }) => {
 						<br/><br/>
 				</div>
 			) : null}
-			
+
 			<ImageContainer>
 				<UpperIconsContainer>
-					<img alt = "photo1" style={{marginRight:'38%' }} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Flyjkg%2FbtrIT91lvHy%2FseRbk2IR9tYKBWeHKG69u1%2Fimg.png"></img>
-					<img alt = "photo2" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoqlOl%2FbtrISNEqoeV%2FOv6miOdVjaOADzyXcllPnK%2Fimg.png"></img>
-					<img alt = "photo3" style={{ marginLeft:'38%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkHhiq%2FbtrIRF7H6gC%2FnoqrnCCKbzrZThW8EGjYZ0%2Fimg.png"></img>
+					<img alt="photo1" style={{marginRight:'38%' }} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Flyjkg%2FbtrIT91lvHy%2FseRbk2IR9tYKBWeHKG69u1%2Fimg.png"></img>
+					<img alt="photo2" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoqlOl%2FbtrISNEqoeV%2FOv6miOdVjaOADzyXcllPnK%2Fimg.png"></img>
+					<img alt="photo3" style={{ marginLeft:'38%'}} src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkHhiq%2FbtrIRF7H6gC%2FnoqrnCCKbzrZThW8EGjYZ0%2Fimg.png"></img>
 				</UpperIconsContainer>
-				
+
 				<LowerIconsContainer>
 					<img 
 						onClick={() => {
@@ -222,16 +221,8 @@ const Drama = (props, { history }) => {
 						style={{width:'16%', marginRight:'40%'}} 
 						src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F8DD1z%2FbtrIOSF0zp1%2FGoaATe4xkFtl8gZB8cuhQk%2Fimg.png"></img>
 					<br/>
-					
-					<div>
-						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Seoul">서울 </Link>
-						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Busan">부산</Link>
-						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Jeju"> 제주</Link>
-						<Link style={{zIndex:'10', color:'black',textDecoration: 'none'}} to="/Drama"> 드라마</Link>
-						<Link style={{zIndex:'10', color:'black',textDecoration: 'none', marginRight:'9%'}} to="/Recommendation"> AI추천</Link>
-					</div>
+
 				</LowerIconsContainer>
-				
 				
 				<ImageUploadContainer
 					ref={inputRef}
@@ -256,15 +247,15 @@ const Drama = (props, { history }) => {
 			</ImageContainer>
 
 			<AnalyzingContainer>
-				{loading && result === null ? (
-					<div style={{fontSize:'25px', textAlign:'center'}}>
-						<Dots size={25} color="#224976" style={{textAlign:'center'}}></Dots>
-						분석중...
-					</div>
-				) : null}
+			{loading && result === null ? (
+				<div style={{fontSize:'25px', textAlign:'center'}}>
+					<Dots size={25} color="#224976" style={{textAlign:'center'}}></Dots>
+					분석중...
+				</div>
+			) : null}
 			</AnalyzingContainer>
 		</Container>
 	);
 };
 
-export default Drama;
+export default AIcontent;

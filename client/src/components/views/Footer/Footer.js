@@ -25,7 +25,7 @@ const Footer = () => {
 		
       </Link>
     
-      <Link to="/Mapsearch" className="nav-link" onClick={() => setActiveNav(3)}>
+      <Link to="/" className="nav-link" onClick={() => setActiveNav(3)}>
         <div className="nav-color">
           <AiOutlineSearch
             size="25"
@@ -33,7 +33,7 @@ const Footer = () => {
           />
 		  </div>
       </Link>
-      <Link to="/SeoulRanking" className="nav-link" onClick={() => setActiveNav(4)}>
+      <Link to="/" className="nav-link" onClick={() => setActiveNav(4)}>
         <div className="nav-color">
           <IoMdTrophy
 			  size="25"
@@ -42,7 +42,7 @@ const Footer = () => {
           />
          </div>
       </Link>
-      <Link to ="/Seoul" className="nav-link" onClick={() => setActiveNav(5)}>
+      <Link to ="/AIcontent" className="nav-link" onClick={() => setActiveNav(5)}>
         <div className="nav-color">
           <FaRobot
 			  size="25"

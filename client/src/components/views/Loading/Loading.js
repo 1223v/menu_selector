@@ -11,7 +11,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #FED06E;
+  background-color: #C38E22;
   flex-direction: column;
   position:relative;
   font-family: "loadingpage_font";
@@ -51,7 +51,7 @@ const LoadingContainer=styled.div`
 `;
 
 const BottomText=styled.h1`
-   color:#C0B27F;
+   color:white;
    font-size:20px;
    font-weight:bolder;
    font-family: 'loadingpage_font';
@@ -64,14 +64,14 @@ const BottomText=styled.h1`
 export default function Loading() {
   return (
     <Container className="loading_KOR">
-		<MainText id= "maint">Photo Place</MainText>
-        <SubText>나와 어울리는 여행지는?</SubText>
+		<MainText id= "maint">Menuduce 101</MainText>
+        <SubText>Choose without hesitation!</SubText>
         <LoadingContainer>
 			<br/>
 			<br/>
 		  	<br/>
 		  	<br/>
-            <Bounce size={30} color="#BAAD7D"></Bounce>
+            <Bounce size={30} color="white"></Bounce>
 			<br/>		  
             <BottomText>LOADING</BottomText>
         </LoadingContainer>

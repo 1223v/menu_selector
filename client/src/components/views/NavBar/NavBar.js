@@ -28,7 +28,7 @@ function NavBar() {
   return (
     <div >
 		<NavContainer>
-		 	<MainText>PhotoPlace</MainText>
+		 	<MainText>Menuduce 101</MainText>
 		  </NavContainer>
 	</div>
   )
